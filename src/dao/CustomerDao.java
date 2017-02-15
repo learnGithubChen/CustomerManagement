@@ -3,7 +3,6 @@ package dao;
 import cn.itcast.jdbc.TxQueryRunner;
 import domain.Customer;
 import domain.PageBean;
-import org.apache.commons.collections.buffer.CircularFifoBuffer;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
@@ -11,7 +10,6 @@ import org.apache.commons.dbutils.handlers.ScalarHandler;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.spi.CurrencyNameProvider;
 
 /**
  * Created by codingBoy on 16/10/23.
@@ -54,7 +52,7 @@ public class CustomerDao
              * 4.得到beanList设置给pb
              * 最后返回给pb
              */
-            PageBean<Customer> pb=new PageBean<>();
+            PageBean<Customer> pb=new PageBean<Customer>();
             pb.setPc(pc);
             pb.setPr(pr);
 
@@ -188,7 +186,7 @@ public class CustomerDao
                 params.add("%"+email+"%");
             }
 
-            Number num=qr.query(cntSql.append(whereSql).toString(),new ScalarHandler<>(),params.toArray());
+            Number num=(Number) qr.query(cntSql.append(whereSql).toString(),new ScalarHandler<>(),params.toArray());
 
             int tr=num.intValue();
             pb.setTr(tr);
