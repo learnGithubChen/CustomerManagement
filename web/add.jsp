@@ -26,7 +26,7 @@
             </td>
         </tr>
         <tr>
-            <td>客户性别</td>
+            <td>性别</td>
             <td>
                 <input type="radio" name="gender" value="male" id="male"/>
                 <label for="male">男</label>
